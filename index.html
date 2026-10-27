@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Test 4 Study Garden: Heart Failure and Hypertension</title>
+<style>
+:root{--p1:#ffeef5;--p2:#ffc9e0;--p3:#ff94c8;--p4:#e0539b;--ink:#5a2145;--ok:#d6f5e3;--okb:#4cb97f;--no:#ffd9df;--nob:#e0566e}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;color:var(--ink);font-family:"Baloo 2","Quicksand","Nunito","Trebuchet MS",ui-rounded,sans-serif;background:linear-gradient(170deg,#fff0f6,#ffd6ea 45%,#fbd9f5 75%,#e9ffe9);overflow-x:hidden}
+.pt{position:fixed;top:-30px;font-size:20px;opacity:.6;pointer-events:none;animation:fall 14s linear infinite;z-index:0}
+@keyframes fall{to{transform:translateY(115vh) rotate(360deg)}}
+.wrap{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:16px 14px 60px}
+h1{text-align:center;font-size:clamp(24px,6vw,34px);margin:8px 0 0;color:var(--p4);text-shadow:2px 2px 0 #fff}
+.sub{text-align:center;margin:2px 0 12px}
+.tabs{display:flex;gap:8px;justify-content:center;margin-bottom:14px}
+.tab{font:inherit;font-weight:800;padding:10px 20px;border:3px solid var(--p3);border-radius:99px;background:#fff;color:var(--p4);cursor:pointer}
+.tab.on{background:linear-gradient(180deg,var(--p3),var(--p4));color:#fff}
+.card{background:rgba(255,255,255,.9);border:3px dashed var(--p3);border-radius:24px;padding:16px;box-shadow:0 8px 24px rgba(224,83,155,.18)}
+details{background:#fff;border:2px solid var(--p2);border-radius:18px;margin:10px 0;overflow:hidden}
+summary{cursor:pointer;font-weight:800;padding:12px 14px;background:var(--p1);list-style:none}
+summary::before{content:"🌷 "}
+details[open] summary::before{content:"🌸 "}
+.body{padding:4px 16px 12px;line-height:1.5;font-size:15px}
+.body h4{margin:12px 0 2px;color:var(--p4)}
+.body ul{margin:4px 0;padding-left:20px}
+table{border-collapse:collapse;width:100%;margin:8px 0;font-size:14px;display:block;overflow-x:auto}
+td,th{border:2px solid var(--p2);padding:6px 9px;text-align:left}
+th{background:var(--p1)}
+.prog{height:14px;background:#fff;border-radius:99px;border:2px solid var(--p3);overflow:hidden}
+#bar{height:100%;width:0;background:linear-gradient(90deg,var(--p3),var(--p4));transition:width .4s}
+#count{text-align:center;font-weight:700;margin:6px 0 10px}
+.q{font-size:17px;font-weight:700;line-height:1.4;margin:0 0 8px}
+.hint{margin:0 0 8px;font-style:italic}
+.opt{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;margin:8px 0;border:2px solid var(--p2);border-radius:16px;background:#fff;cursor:pointer;transition:transform .15s}
+.opt:hover{transform:translateY(-2px)}
+.opt input{margin-top:4px;accent-color:var(--p4);width:18px;height:18px;flex:none}
+.opt.on{background:var(--p1);border-color:var(--p4)}
+.opt.ok{background:var(--ok);border-color:var(--okb)}
+.opt.bad{background:var(--no);border-color:var(--nob)}
+.opt.miss{border:2px dashed var(--okb)}
+.tag{display:block;font-size:12px;font-weight:700}
+.banner{margin:12px 0 6px;padding:7px 14px;border-radius:99px;font-weight:800;display:inline-block}
+.banner.ok{background:var(--ok);color:#1d7a47}.banner.half{background:#ffe7c7;color:#a85a00}.banner.no{background:var(--no);color:#b02a41}
+.rat{padding:10px 14px;background:#fff7fb;border-left:5px solid var(--p3);border-radius:0 14px 14px 0;line-height:1.45;font-size:14px}
+.btn{display:block;margin:14px auto 0;padding:11px 28px;font:inherit;font-weight:800;font-size:16px;color:#fff;background:linear-gradient(180deg,var(--p3),var(--p4));border:0;border-radius:99px;cursor:pointer;box-shadow:0 5px 0 #b83a7c;transition:transform .15s}
+.btn:hover:not(:disabled){transform:scale(1.06) rotate(-1deg)}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.score{text-align:center}.big{font-size:52px;color:var(--p4)}
+.rev{list-style:none;padding:0;text-align:left}
+.rev li{padding:6px 12px;margin:5px 0;border-radius:14px;background:#fff;border:2px solid var(--p2);font-size:14px}
+</style>
+</head>
+<body>
+<script>for(let i=0;i<9;i++){const s=document.createElement('span');s.className='pt';s.textContent=['🌸','🌷','🦋','🌼'][i%4];s.style.left=(i*11+2)+'%';s.style.animationDelay=(-i*1.6)+'s';s.style.animationDuration=(12+i%4*3)+'s';document.body.append(s)}</script>
+<div class="wrap">
+<h1>🌸 Test 4 Study Garden 🌸</h1>
+<p class="sub">Heart Failure and Hypertension · VN22 Med-Surg I</p>
+<div class="tabs"><button class="tab on" data-t="guide">🌷 Study Guide</button><button class="tab" data-t="test">🦋 Practice Test</button></div>
+<div id="guide"></div>
+<div id="test" hidden>
+<div class="prog"><div id="bar"></div></div><div id="count"></div>
+<div class="card" id="card"></div>
+<button class="btn" id="go" disabled>Check my answer ✨</button>
+</div>
+</div>
+<script>
+const G=[
+[`Heart Failure: Definition and Medical Management`,`<p>HF occurs when the heart muscle is unable to pump effectively, resulting in inadequate cardiac output, myocardial hypertrophy, and pulmonary/systemic congestion. The heart cannot maintain adequate circulation to meet tissue needs.</p><h4>Medical management</h4><p>Diuretics, ACE inhibitors/ARBs, beta blockers, digoxin, low sodium diet, fluid restriction as prescribed, oxygen, daily weights, activity pacing. Treat the underlying cause (CAD, HTN, valve disease).</p><table><tr><th>Class</th><th>Examples</th></tr><tr><td>Diuretics</td><td>Furosemide (Lasix), chlorothiazide (Diuril), amiloride (Midamor)</td></tr><tr><td>Angiotensin-receptor neprilysin inhibitors (ARNIs)</td><td>Sacubitril/valsartan (Entresto)</td></tr><tr><td>ACE inhibitors</td><td>Captopril, enalapril (Vasotec)</td></tr><tr><td>Angiotensin II receptor blockers</td><td>Losartan (Cozaar), candesartan (Atacand)</td></tr><tr><td>Beta blockers</td><td>Bisoprolol (Zebeta), metoprolol (Lopressor)</td></tr><tr><td>Hydralazine and isosorbide dinitrate</td><td>Hydralazine and isosorbide dinitrate (BiDil)</td></tr><tr><td>Aldosterone antagonist</td><td>Spironolactone (Aldactone), eplerenone (Inspra)</td></tr></table>`],
+[`Right-Sided and Left-Sided HF`,`<h4>Right-sided HF (S/Sx)</h4><ul><li>JVD</li><li>Ascending dependent edema (legs, ankles, sacrum)</li><li>Abdominal distention, ascites</li><li>Fatigue, weakness</li><li>Nausea and anorexia</li><li>Polyuria at rest (nocturnal)</li><li>Liver enlargement (hepatomegaly) and tenderness</li><li>Weight gain</li></ul><h4>Left-sided HF (S/Sx)</h4><ul><li>Dyspnea, orthopnea, paroxysmal nocturnal dyspnea</li><li>Fatigue and AMS</li><li>Displaced apical pulse (hypertrophy)</li><li>Pulmonary congestion (dyspnea, cough, bibasilar crackles)</li><li>Frothy sputum</li><li>Manifestations of organ failure (oliguria)</li><li>Nocturia</li></ul>`],
+[`Complications of HF`,`<ul><li><b>Pulmonary edema:</b> abnormal fluid build-up in the lungs. S/Sx: anxiety, tachycardia, acute respiratory distress, dyspnea at rest, hypoxia, altered LOC, cough, crackles, frothy sputum. Nursing: high Fowler's, administer O2, IV morphine, furosemide.</li><li><b>Renal dysfunction:</b> low perfusion causes decreased urine output, rising BUN and creatinine.</li><li><b>Arrhythmias:</b> A-fib, ventricular dysrhythmias, sudden cardiac death.</li><li><b>Thromboembolism:</b> blood pooling in the chambers and veins leads to clots, stroke, pulmonary embolism.</li></ul>`],
+[`Compensatory Mechanisms`,`<ul><li><b>RAAS:</b> low renal perfusion releases renin, which makes angiotensin II (vasoconstriction, raises afterload) and aldosterone (sodium and water retention, raises preload). Initially helps but worsens fluid overload.</li><li><b>Sympathetic nervous system activation:</b> releases epinephrine and norepinephrine, raising heart rate and contractility and causing vasoconstriction. Increases the heart's workload and oxygen demand.</li><li><b>Cardiac remodeling:</b> chronic strain causes hypertrophy and dilation of the ventricles. The heart becomes larger and weaker.</li></ul><h4>Preload vs. afterload</h4><ul><li><b>Preload:</b> volume/stretch of the ventricle at the end of filling (reduce with diuretics, ACE inhibitors, sodium restriction).</li><li><b>Afterload:</b> resistance the ventricle pumps against (reduce with ACE inhibitors, ARBs, vasodilators).</li></ul><h4>Decreased cardiac output and its effects</h4><p>Fatigue, weakness, dizziness; hypotension; cool/pale skin; weak pulses; decreased urine output; confusion; decreased exercise tolerance.</p>`],
+[`Diagnostic Testing`,`<ul><li><b>Echocardiogram:</b> shows ejection fraction (EF), chamber size, wall motion, valve function. Reduced EF (under 40%) confirms systolic heart failure.</li><li><b>Chest x-ray:</b> assesses heart size and degree of pulmonary congestion. An enlarged heart and fluid in the base of the lungs suggest HF.</li><li><b>BNP:</b> released when ventricles stretch. Elevated in HF (above 100 pg/mL). Higher level = more severe. Used to determine if the client's dyspnea is cardiac or noncardiac in origin.</li><li><b>ECG:</b> detects arrhythmias, prior MI, ischemia, hypertrophy.</li><li><b>Labs:</b> Na+ low from dilution (hyponatremia); K+ (monitor with diuretics/ACE inhibitors); magnesium. Renal panel: BUN and creatinine elevated with reduced perfusion. Liver panel: AST/ALT/bilirubin elevated from hepatic congestion.</li></ul>`],
+[`Nursing Actions and Assessment`,`<ul><li>Assess lung sounds, edema, JVD, heart sounds, vital signs, SpO2, mental status</li><li>Daily weights, strict I&amp;O</li><li>High Fowler's position; O2 as prescribed</li><li>Administer medications; monitor Na+ and K+, BP, apical pulse</li><li>Space activity with rest; low sodium diet; fluid restriction as prescribed</li><li>Report weight gain of 2-3 lb in 24 hr or 5 lb in a week, worsening dyspnea, decreased urine output</li></ul>`],
+[`HF Risk Factors, Education and Lifestyle`,`<h4>Risk factors</h4><p>Family history of heart disease, chronic pulmonary disease, CAD, hypertension, chronic infection or inflammation, diabetes mellitus, obesity, metabolic diseases, alcohol misuse, treatment with cardiotoxic agents like anthracycline.</p><h4>Patient education</h4><ul><li>Monitor for signs of fluid overload such as increased SOB, swelling, or weight gain</li><li>Weigh daily, same time, same scale, before breakfast</li><li>Take medications as prescribed, do not stop abruptly</li><li>Keep follow-up appointments; get vaccines (flu, pneumonia)</li><li>Take pulse before digoxin</li><li>Report weight gain, swelling, SOB, dizziness, fatigue, palpitations</li><li>Know when to call 911 (severe dyspnea and chest pain)</li></ul><h4>Lifestyle</h4><ul><li><b>Diet:</b> sodium intake less than 3 g/day; fluid restriction approx. 2 L/day is typical</li><li><b>Activity:</b> regular moderate exercise, plan rest periods, cardiac rehab</li><li><b>Habits:</b> quit smoking, limit alcohol, maintain healthy weight, manage stress, elevate legs</li></ul>`],
+[`Hypertension: BP Categories and Risk Factors`,`<table><tr><th>Category</th><th>Systolic</th><th>Diastolic</th></tr><tr><td>Expected</td><td>&lt;120</td><td>&lt;80</td></tr><tr><td>Elevated (Pre-HTN)</td><td>120-129</td><td>&lt;80</td></tr><tr><td>Stage 1</td><td>130-139</td><td>80-89</td></tr><tr><td>Stage 2</td><td>&ge;140</td><td>&ge;90</td></tr><tr><td>Hypertensive emergency</td><td>&gt;180</td><td>&ge;120</td></tr></table><h4>Risk factors</h4><p>Genetics, age, African American ethnicity, excess sodium intake, smoking, physical inactivity, diabetes mellitus, overweight or obesity, hyperlipidemia, increased alcohol consumption, stress, menopause (independent of age).</p><h4>Complications</h4><p>Stroke, MI, heart failure, left ventricular hypertrophy, chronic kidney disease, retinopathy/vision loss, peripheral artery disease, aneurysm.</p>`],
+[`Primary vs. Secondary HTN and HTN Crisis`,`<ul><li><b>Primary (essential) HTN:</b> no identifiable cause; about 90-95% of cases. Develops gradually from genetics, age, diet, and lifestyle.</li><li><b>Secondary HTN:</b> caused by disease states (kidney disease), endocrine disorders (Cushing's, hyperaldosteronism, pheochromocytoma), sleep apnea, pregnancy, medications (NSAIDs, steroids, decongestants, oral contraceptives). Often improves when the cause is treated.</li><li><b>HTN crisis:</b> often occurs when clients do not follow the medication regimen; can also be triggered by secondary hypertension, acute stressors, drug interactions, or withdrawal from antihypertensive medications. BP above 180/120 mmHg.<ul><li><b>Urgency:</b> no organ damage (lower BP gradually, oral meds)</li><li><b>Emergency:</b> with organ damage (headache, confusion, vision changes, chest pain, dyspnea, seizures); needs IV meds and ICU monitoring. Lower BP gradually (not more than about 25% in the first hour) to avoid ischemia.</li></ul></li></ul><h4>Patient education</h4><ul><li>Take medications exactly as prescribed even when feeling well; do not stop abruptly</li><li>Monitor BP at home and keep a log</li><li>DASH diet; limit sodium, limit alcohol, quit smoking</li><li>Exercise regularly; lose weight if overweight</li><li>Rise slowly (orthostatic hypotension)</li><li>Report severe headache, chest pain, vision changes, confusion</li></ul>`],
+[`Medications: Beta Blockers and Digoxin`,`<h4>Beta adrenergic blocker (metoprolol, carvedilol, atenolol)</h4><p>Blocks beta receptors: decreases HR, contractility, and renin release.</p><ul><li><b>HF:</b> reduces heart workload and prevents remodeling; started low and slow in stable patients (metoprolol succinate, carvedilol, bisoprolol)</li><li><b>HTN:</b> lowers heart rate and cardiac output, decreasing BP</li><li><b>Nursing:</b> check apical pulse and BP before giving (hold if HR under 60 bpm or 90-100 systolic); do not stop abruptly; may mask hypoglycemia; avoid nonselective types in asthma</li></ul><h4>Cardiotonic (digoxin)</h4><p>Increases contractility (positive inotrope) and slows heart rate (negative chronotrope).</p><ul><li><b>HF:</b> improves cardiac output and relieves symptoms. <b>HTN:</b> not used.</li><li><b>Nursing:</b> check apical pulse for a full minute (hold if under 60); therapeutic level 0.5-2 ng/mL; toxicity signs: N/V, anorexia, visual changes (yellow-green halos), bradycardia/arrhythmias; hypokalemia increases toxicity risk</li></ul>`],
+[`Medications: Furosemide and ACE Inhibitors`,`<h4>Loop diuretic (furosemide)</h4><p>Blocks sodium and water reabsorption in the loop of Henle.</p><ul><li><b>HF:</b> reduces fluid overload and preload, relieves edema and pulmonary congestion</li><li><b>HTN:</b> lowers BP by reducing volume; used mainly with renal impairment or fluid overload (thiazides are first-line)</li><li><b>Nursing:</b> monitor K+, Na+, Mg+, BP, I&amp;O, daily weight; watch for hypokalemia, dehydration, orthostatic hypotension, ototoxicity with rapid IV push</li></ul><h4>ACE inhibitors (lisinopril, enalapril)</h4><p>Block conversion of angiotensin I to angiotensin II, causing vasodilation and decreased aldosterone (less sodium and water retention).</p><ul><li><b>HF:</b> reduces preload and afterload, prevents remodeling, improves survival</li><li><b>HTN:</b> first-line therapy; lowers BP through vasodilation</li><li><b>Nursing:</b> dry cough; angioedema (emergency, stop drug); hyperkalemia; monitor BP, K+, creatinine; contraindicated in pregnancy; avoid potassium supplements/salt substitutes</li></ul>`],
+[`Oxygen Use and Safety`,`<ul><li>Give O2 as prescribed to maintain SpO2 (usually 92-100%; lower target for COPD)</li><li>No smoking, open flames, or sparks nearby; post "Oxygen in use" signs</li><li>Keep O2 at least 10 feet from heat sources; use electrical equipment that is grounded and in good repair</li><li>Avoid oil/petroleum-based products (use water-based)</li><li>Secure tanks upright; check flow rate and connections</li><li>Check skin around nares and ears for breakdown; humidify if needed</li></ul>`]
+];
+const Q=[
+[`A nurse is caring for a client who has right-sided heart failure. Which finding should the nurse expect?`,[`Bibasilar crackles`,`Jugular vein distention`,`Orthopnea`,`Frothy sputum`],[1],`Right-sided HF causes JVD, dependent edema, ascites, hepatomegaly, and weight gain. Crackles, orthopnea, and frothy sputum are left-sided findings.`],
+[`Which manifestations are associated with right-sided heart failure?`,[`Ascending dependent edema`,`Paroxysmal nocturnal dyspnea`,`Abdominal distention and ascites`,`Hepatomegaly with tenderness`,`Frothy sputum`,`Weight gain`],[0,2,3,5],`Right-sided HF causes systemic congestion: dependent edema, ascites, hepatomegaly, and weight gain. PND and frothy sputum are left-sided.`],
+[`A client has left-sided heart failure. Which finding should the nurse expect?`,[`Ascites`,`Bibasilar crackles`,`Hepatomegaly`,`Sacral edema`],[1],`Left-sided HF causes pulmonary congestion: dyspnea, cough, bibasilar crackles, and frothy sputum.`],
+[`A client with heart failure develops acute pulmonary edema. Which action should the nurse take first?`,[`Place the client in high Fowler's position and administer oxygen`,`Place the client supine`,`Encourage oral fluids`,`Obtain a daily weight`],[0],`High Fowler's position and O2 ease breathing. Furosemide and IV morphine are also given for pulmonary edema.`],
+[`Which finding indicates that a client with heart failure is developing pulmonary edema?`,[`Frothy sputum with dyspnea at rest`,`Ascites`,`Jugular vein distention`,`Hepatomegaly`],[0],`Pulmonary edema presents with anxiety, tachycardia, dyspnea at rest, hypoxia, cough, crackles, and frothy sputum.`],
+[`Low renal perfusion in heart failure triggers the release of which substance?`,[`Renin`,`Insulin`,`Digoxin`,`BNP`],[0],`Low renal perfusion releases renin, which leads to angiotensin II and aldosterone (the RAAS compensatory response).`],
+[`Which effect of angiotensin II worsens heart failure?`,[`Vasodilation`,`Vasoconstriction, which raises afterload`,`Increased sodium excretion`,`Decreased heart rate`],[1],`Angiotensin II causes vasoconstriction and raises afterload. Aldosterone adds sodium and water retention, which raises preload.`],
+[`A nurse is teaching about cardiac remodeling. Which statement is correct?`,[`The ventricles shrink and become stronger`,`Chronic strain causes the ventricles to hypertrophy and dilate, so the heart becomes larger and weaker`,`The heart muscle repairs itself with time`,`Remodeling lowers oxygen demand`],[1],`Chronic strain leads to hypertrophy and dilation of the ventricles. The heart becomes larger and weaker.`],
+[`Which medication classes reduce afterload in a client with heart failure?`,[`ACE inhibitors`,`ARBs`,`Vasodilators`,`Vasoconstrictors`,`IV fluid boluses`],[0,1,2],`Afterload is the resistance the ventricle pumps against. ACE inhibitors, ARBs, and vasodilators reduce it.`],
+[`Which findings indicate decreased cardiac output?`,[`Hypotension`,`Cool, pale skin`,`Weak pulses`,`Decreased urine output`,`Bounding pulses`],[0,1,2,3],`Decreased cardiac output causes hypotension, cool/pale skin, weak pulses, decreased urine output, confusion, and fatigue.`],
+[`Which echocardiogram result confirms systolic heart failure?`,[`Ejection fraction of 62%`,`Ejection fraction of 55%`,`Ejection fraction of 35%`,`Ejection fraction of 50%`],[2],`A reduced EF (under 40%) confirms systolic heart failure.`],
+[`A client has dyspnea and a BNP of 450 pg/mL. What does the nurse understand about this result?`,[`The dyspnea is most likely cardiac in origin`,`The dyspnea is most likely noncardiac`,`The result is within the expected range`,`The result indicates liver failure`],[0],`BNP is released when ventricles stretch and is elevated above 100 pg/mL in HF. It helps determine whether dyspnea is cardiac or noncardiac.`],
+[`Which laboratory finding should the nurse expect in a client with heart failure?`,[`Hypernatremia`,`Hyponatremia from dilution`,`Decreased BUN`,`Decreased creatinine`],[1],`Sodium falls from dilution. BUN and creatinine rise with reduced renal perfusion.`],
+[`Which statement by a client with heart failure shows understanding of daily weights?`,[`"I will weigh myself at different times each day"`,`"I will weigh myself every Monday"`,`"I will weigh myself at the same time on the same scale before breakfast"`,`"I will weigh myself after meals"`],[2],`Weigh daily, same time, same scale, before breakfast, to detect fluid retention accurately.`],
+[`A client with heart failure should notify the provider for which weight change?`,[`Gain of 1 lb in a month`,`Gain of 2-3 lb in 24 hours or 5 lb in a week`,`Loss of 1 lb in a day`,`Gain of 1 lb in a week`],[1],`Rapid weight gain signals fluid retention. Report 2-3 lb in 24 hr or 5 lb in a week.`],
+[`Which nursing actions are appropriate for a client with heart failure?`,[`Daily weights`,`Strict I&O`,`High Fowler's position`,`Spacing activity with rest periods`,`Encouraging a high-sodium diet`],[0,1,2,3],`HF care includes daily weights, strict I&O, high Fowler's, O2, and activity paced with rest. Sodium should be restricted.`],
+[`Which are risk factors for developing heart failure?`,[`Family history of heart disease`,`Coronary artery disease`,`Hypertension`,`Diabetes mellitus`,`Regular moderate exercise`],[0,1,2,3],`Exercise is protective. The others are risk factors listed for HF.`],
+[`Which statement shows a client understands the diet for heart failure?`,[`"I will limit sodium to less than 3 g per day"`,`"I can use salt freely if I drink more water"`,`"I will stop limiting fluids"`,`"I will increase my salt intake"`],[0],`Diet: sodium less than 3 g/day, and fluid restriction around 2 L/day is typical.`],
+[`What should a client do before taking digoxin?`,[`Check blood glucose`,`Take a pulse`,`Weigh the dose`,`Eat a high-fiber meal`],[1],`Take the pulse before digoxin. The nurse checks an apical pulse for a full minute and holds if under 60.`],
+[`A client's apical pulse is 54/min before a scheduled dose of digoxin. Which action should the nurse take?`,[`Administer the dose`,`Hold the dose and notify the provider`,`Double the next dose`,`Recheck in 24 hours`],[1],`Hold digoxin if the apical pulse (full minute) is under 60.`],
+[`Which digoxin level is within the therapeutic range?`,[`0.2 ng/mL`,`0.8 ng/mL`,`2.8 ng/mL`,`3.5 ng/mL`],[1],`The therapeutic range is 0.5-2 ng/mL.`],
+[`Which finding suggests digoxin toxicity?`,[`Yellow-green halos`,`Hypertension`,`Increased appetite`,`Tachypnea`],[0],`Toxicity signs: N/V, anorexia, visual changes (yellow-green halos), and bradycardia/arrhythmias.`],
+[`A client is taking digoxin and furosemide. Which lab value increases the risk of digoxin toxicity?`,[`Potassium 3.0 mEq/L`,`Potassium 4.2 mEq/L`,`Sodium 140 mEq/L`,`Potassium 4.8 mEq/L`],[0],`Hypokalemia increases digoxin toxicity risk. Furosemide can lower potassium, so monitor it.`],
+[`Which finding should the nurse monitor for in a client receiving furosemide?`,[`Hypokalemia`,`Hyperkalemia`,`Hypertension`,`Fluid retention`],[0],`Loop diuretics block sodium and water reabsorption and can cause hypokalemia, dehydration, and orthostatic hypotension.`],
+[`A nurse is giving furosemide by IV push. Rapid administration increases the risk of which adverse effect?`,[`Ototoxicity`,`Angioedema`,`Dry cough`,`Bradycardia`],[0],`Ototoxicity can occur with rapid IV push of furosemide.`],
+[`A client's heart rate is 56/min before a scheduled dose of metoprolol. Which action should the nurse take?`,[`Administer the dose`,`Hold the dose and notify the provider`,`Give half the dose`,`Give with food`],[1],`Hold a beta blocker if HR is under 60 bpm or systolic BP is 90-100 or less.`],
+[`A client who has diabetes is prescribed a beta blocker. Which teaching should the nurse include?`,[`Beta blockers may mask signs of hypoglycemia`,`Beta blockers raise heart rate`,`Stop the medication when feeling well`,`Beta blockers cure diabetes`],[0],`Beta blockers may mask hypoglycemia. Do not stop abruptly.`],
+[`A client taking an ACE inhibitor reports which finding that requires immediate action?`,[`Dry cough`,`Swelling of the lips and tongue`,`Mild headache`,`Dry mouth`],[1],`Angioedema is an emergency. Stop the drug. A dry cough is common but not an emergency.`],
+[`Which statement shows a client understands teaching about lisinopril?`,[`"I will use a salt substitute for flavor"`,`"I will take potassium supplements daily"`,`"I will avoid salt substitutes and potassium supplements"`,`"I can take this if I become pregnant"`],[2],`ACE inhibitors can cause hyperkalemia, so avoid potassium supplements and salt substitutes. They are contraindicated in pregnancy.`],
+[`A client's BP is 134/82 mmHg. Which category does the nurse recognize?`,[`Expected`,`Elevated`,`Stage 1 hypertension`,`Stage 2 hypertension`],[2],`Stage 1 is 130-139 systolic or 80-89 diastolic. Stage 2 is 140/90 or higher.`],
+[`A client has a BP of 192/124 mmHg with headache, confusion, and chest pain. Which action is appropriate?`,[`Give oral medication and send the client home`,`Prepare for IV medications and ICU monitoring, lowering BP gradually`,`Lower BP as fast as possible`,`Encourage rest and recheck tomorrow`],[1],`This is a hypertensive emergency with organ damage. Lower BP gradually (no more than about 25% in the first hour) to avoid ischemia.`],
+[`Which are risk factors for hypertension?`,[`Excess sodium intake`,`Physical inactivity`,`Smoking`,`Hyperlipidemia`,`Regular exercise`],[0,1,2,3],`Regular exercise lowers BP. The others are listed HTN risk factors.`],
+[`Which medications can cause secondary hypertension?`,[`NSAIDs`,`Steroids`,`Decongestants`,`Oral contraceptives`,`Acetaminophen`],[0,1,2,3],`Secondary HTN is caused by disease, endocrine disorders, sleep apnea, pregnancy, or medications such as NSAIDs, steroids, decongestants, and oral contraceptives.`],
+[`Which statements by a client with hypertension show understanding of the teaching?`,[`"I will take my medication even when I feel well"`,`"I will rise slowly from lying to sitting"`,`"I will keep a log of my home BP"`,`"I will stop my pills if my BP is normal"`],[0,1,2],`Take medications as prescribed and never stop abruptly. Monitor BP at home and rise slowly because of orthostatic hypotension.`],
+[`Which actions are correct for oxygen safety?`,[`Post "Oxygen in use" signs`,`Keep O2 at least 10 feet from heat sources`,`Use water-based products`,`Secure tanks upright`,`Apply petroleum jelly to the nares`],[0,1,2,3],`Avoid oil/petroleum-based products with oxygen because they are a fire hazard. Use water-based products.`]
+];
+const $=s=>document.querySelector(s);
+const el=(t,c,x)=>{const e=document.createElement(t);if(c)e.className=c;if(x)e.textContent=x;return e};
+G.forEach((g,k)=>{const d=document.createElement('details');d.innerHTML='<summary>'+g[0]+'</summary><div class="body">'+g[1]+'</div>';$('#guide').append(d)});
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('on',x===b));$('#guide').hidden=b.dataset.t!=='guide';$('#test').hidden=b.dataset.t!=='test'});
+let i=0,sel=new Set(),done=false,res=[];const go=$('#go');
+function render(){
+ const d=Q[i],sata=d[2].length>1;done=false;sel=new Set();
+ $('#bar').style.width=(i/Q.length*100)+'%';$('#count').textContent='🌸 Question '+(i+1)+' of '+Q.length+' 🌸';
+ go.textContent='Check my answer ✨';go.disabled=true;go.style.display='';
+ const c=$('#card');c.className='card';c.innerHTML='';
+ c.append(el('p','q',d[0]));if(sata)c.append(el('p','hint','(Select All that Apply.)'));
+ d[1].forEach((o,k)=>{const lab=el('label','opt'),inp=document.createElement('input');inp.type=sata?'checkbox':'radio';inp.name='o';
+  inp.onchange=()=>{if(done)return;if(sata){inp.checked?sel.add(k):sel.delete(k)}else sel=new Set([k]);go.disabled=!sel.size;c.querySelectorAll('.opt').forEach((l,j)=>l.classList.toggle('on',sel.has(j)))};
+  const t=el('span');t.append(el('span','',o));lab.append(inp,t);c.append(lab)});
+}
+function check(){
+ const d=Q[i];done=true;let hit=0,wrong=0;
+ document.querySelectorAll('#card .opt').forEach((lab,k)=>{const ok=d[2].includes(k),s=sel.has(k);lab.querySelector('input').disabled=true;lab.classList.remove('on');let tag='';
+  if(ok&&s){hit++;lab.classList.add('ok');tag='✓ Correct answer'}else if(ok){lab.classList.add('miss');tag='Should have been selected'}else if(s){wrong++;lab.classList.add('bad');tag='✗ Incorrect'}
+  if(tag)lab.lastChild.append(el('span','tag',tag))});
+ const r=hit===d[2].length&&!wrong?'ok':(d[2].length>1&&hit>0?'half':'no');res.push(r);
+ $('#card').append(el('div','banner '+r,r==='ok'?'✓ CORRECT':r==='half'?'½ PARTIALLY CORRECT':'✗ INCORRECT'),el('div','rat',d[3]));
+ go.textContent=i<Q.length-1?'Next question ➜':'See my results 🎀';go.disabled=false;
+}
+function finish(){
+ $('#bar').style.width='100%';$('#count').textContent='';go.style.display='none';
+ const ok=res.filter(x=>x==='ok').length,half=res.filter(x=>x==='half').length;
+ const msg=ok>=32?'Perfect bloom! You are ready for Test 4! 🌟':ok>=27?'Beautiful work, future nurse! 💖':ok>=21?'Growing nicely! Review the guide and try again ✨':'Keep watering those flowers. Review the guide and retry! 🌷';
+ const c=$('#card');c.className='card score';c.innerHTML='';
+ c.append(el('div','big','🦋 '+ok+'/'+Q.length),el('p','q',msg));if(half)c.append(el('p','',half+' partially correct'));
+ const ul=el('ul','rev');res.forEach((r,k)=>ul.append(el('li','',(r==='ok'?'✓ ':r==='half'?'½ ':'✗ ')+'Question '+(k+1))));c.append(ul);
+ const b=el('button','btn','Try again 🌸');b.onclick=()=>{i=0;res=[];go.style.display='';render()};c.append(b);
+}
+go.onclick=()=>{if(!done){if(sel.size)check();return}if(i<Q.length-1){i++;render();window.scrollTo({top:0,behavior:'smooth'})}else finish()};
+render();
+</script>
+</body>
+</html>
